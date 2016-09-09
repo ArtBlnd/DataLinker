@@ -28,7 +28,7 @@
 #define AddAddress(_value, _offset) \
     (void*)((size_t)&##_value + (size_t)_offset)
 
-#pragma data_seg("DATA_LINKER_SHARED")                         // DLL SHARED MEMORY START
+#pragma data_seg(".DATA_LINKER_SHARED")                        // DLL SHARED MEMORY START
 //
 // long long = 8byte = 64bit
 // 4 long long = 32 = 256bit
@@ -40,10 +40,10 @@ struct
     unsigned long long byte_2;
     unsigned long long byte_3;
     unsigned long long byte_4;
-} g_bitIsInitialized;
+} g_bitIsInitialized = {0, };
 
 #pragma data_seg()                                             // DLL SHARED MEMORY END
-#pragma comment(linker, "/SECTION:DATA_LINKER_SHARED,RWS")    // set DATA_LINKER_SHARED section as R/W/S(Read, Write, Share)
+#pragma comment(linker, "/SECTION:.DATA_LINKER_SHARED,RWS")    // set DATA_LINKER_SHARED section as R/W/S(Read, Write, Share)
 
 class LinkedChannelImpl : public LinkedChannel
 {

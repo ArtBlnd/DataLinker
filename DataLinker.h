@@ -12,9 +12,9 @@
 #pragma comment(lib, "ws2_32.lib")
 
 #ifdef _DLL
-#define DATA_LINKER_API __declspec(dllexport);
+#define DATA_LINKER_API __declspec(dllexport)
 #else
-#define DATA_LINKER_API __declspec(dllimport);
+#define DATA_LINKER_API __declspec(dllimport)
 #endif
 
 //
